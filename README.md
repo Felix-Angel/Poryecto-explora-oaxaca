@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # explora_oaxaca
 
 A new Flutter project.
@@ -15,3 +16,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Poryecto-explora-oaxaca
+>>>>>>> 0b720a901ed3cac2612b9f5105189ef0b859be12
