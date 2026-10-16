@@ -21,7 +21,7 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    expect(find.text('EXPLORA OAXACA'), findsOneWidget);
+    expect(find.text('Explora Oaxaca'), findsOneWidget);
     expect(find.text('Objetivo'), findsOneWidget);
   });
 }

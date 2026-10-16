@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../shared/widgets/widget_encabezado_seccion.dart';
+import '../../favoritos/pages/pantalla_favoritos.dart';
 import '../widgets/elemento_informacion.dart';
 
 class PantallaAcercaDe extends StatelessWidget {
@@ -10,28 +12,28 @@ class PantallaAcercaDe extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Acerca de Explora Oaxaca'),
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
         centerTitle: true,
+        actions: [
+          IconButton(
+            tooltip: 'Ver favoritos',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const PantallaFavoritos(),
+              ),
+            ),
+            icon: const Icon(Icons.favorite_border),
+          ),
+        ],
       ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             const SizedBox(height: 12),
-            const Icon(Icons.explore, size: 80),
-            const SizedBox(height: 16),
-            Text(
-              'EXPLORA OAXACA',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineSmall
-                  ?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Una aplicación para descubrir destinos turísticos de Oaxaca.',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge,
+            const WidgetEncabezadoSeccion(
+              titulo: 'Explora Oaxaca',
+              subtitulo: 'Una aplicación para descubrir destinos turísticos de Oaxaca.',
+              icono: Icons.explore_outlined,
             ),
             const SizedBox(height: 24),
             ElementoInformacion(
