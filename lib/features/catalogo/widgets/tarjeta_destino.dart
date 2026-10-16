@@ -1,42 +1,36 @@
 import 'package:flutter/material.dart';
 
-class TarjetaDestino extends StatelessWidget {
-  final String nombre;
-  final String municipio;
-  final String descripcion;
-  final String imagenUrl;
+import '../../../models/destino.dart';
+import 'etiqueta_categoria.dart';
 
-  const TarjetaDestino({
-    super.key,
-    required this.nombre,
-    required this.municipio,
-    required this.descripcion,
-    required this.imagenUrl,
-  });
+class TarjetaDestino extends StatelessWidget {
+  const TarjetaDestino({super.key, required this.destino, required this.onTap});
+
+  final Destino destino;
+  final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      elevation: 2,
+  Widget build(BuildContext context) => Card(
+    clipBehavior: Clip.antiAlias,
+    margin: EdgeInsets.zero,
+    elevation: 2,
+    child: InkWell(
+      onTap: onTap,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(
-            imagenUrl,
+            destino.imagen,
             height: 180,
             width: double.infinity,
             fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return Container(
-                height: 180,
-                width: double.infinity,
-                color: Colors.grey.shade200,
-                alignment: Alignment.center,
-                child: const Icon(Icons.image_not_supported_outlined, size: 45),
-              );
-            },
+            errorBuilder: (context, error, stackTrace) => Container(
+              height: 180,
+              width: double.infinity,
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              alignment: Alignment.center,
+              child: const Icon(Icons.image_not_supported_outlined, size: 45),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16),
@@ -44,25 +38,32 @@ class TarjetaDestino extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  nombre,
+                  destino.nombre,
                   style: Theme.of(context).textTheme.titleLarge
                       ?.copyWith(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 Row(
                   children: [
                     const Icon(Icons.location_on_outlined, size: 18),
                     const SizedBox(width: 4),
-                    Expanded(child: Text(municipio)),
+                    Expanded(
+                      child: Text('${destino.municipio}, ${destino.ubicacion}'),
+                    ),
                   ],
                 ),
-                const SizedBox(height: 10),
-                Text(descripcion, maxLines: 3, overflow: TextOverflow.ellipsis),
+                const SizedBox(height: 8),
+                EtiquetaCategoria(categoria: destino.categoria),
+                Text(
+                  destino.descripcion,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
 }
