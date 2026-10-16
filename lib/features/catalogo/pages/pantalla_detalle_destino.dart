@@ -131,7 +131,7 @@ class PantallaDetalleDestino extends StatelessWidget {
                     contenido: destino.historia,
                     icono: Icons.account_balance_outlined,
                   ),
-                if (destino.actividades.isNotEmpty == true)
+                if (destino.actividades.isNotEmpty)
                   _DetalleLista(
                     titulo: 'Actividades',
                     elementos: destino.actividades,
