@@ -26,18 +26,18 @@ class PantallaInicio extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.travel_explore, color: colores.primary, size: 25),
             const SizedBox(width: 9),
-            const Text('Explora Oaxaca'),
+            const Expanded(
+              child: Text('Explora Oaxaca', overflow: TextOverflow.ellipsis),
+            ),
           ],
         ),
         actions: [
           IconButton(
             tooltip: 'Ver favoritos',
-            onPressed: () =>
-                _abrirPantalla(context, const PantallaFavoritos()),
+            onPressed: () => _abrirPantalla(context, const PantallaFavoritos()),
             icon: const Icon(Icons.favorite_border),
           ),
           const SizedBox(width: 4),
@@ -56,16 +56,14 @@ class PantallaInicio extends StatelessWidget {
             const SizedBox(height: 28),
             Text(
               'Explora a tu manera',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
+              style: Theme.of(context).textTheme.titleLarge
+                  ?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 5),
             Text(
               'Lugares únicos, historias y paisajes por descubrir.',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: colores.onSurfaceVariant,
-                  ),
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(color: colores.onSurfaceVariant),
             ),
             const SizedBox(height: 16),
             _AccesoInicio(
@@ -86,10 +84,8 @@ class PantallaInicio extends StatelessWidget {
                     icono: Icons.category_outlined,
                     titulo: 'Categorías',
                     color: colores.secondary,
-                    onTap: () => _abrirPantalla(
-                      context,
-                      const PantallaCategorias(),
-                    ),
+                    onTap: () =>
+                        _abrirPantalla(context, const PantallaCategorias()),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -128,95 +124,95 @@ class _Portada extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ClipRRect(
-        borderRadius: BorderRadius.circular(26),
-        child: SizedBox(
-          height: 300,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.asset(
-                'assets/images/hierve_el_agua.jpg',
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const ColoredBox(color: Color(0xFF315C45)),
+    borderRadius: BorderRadius.circular(26),
+    child: SizedBox(
+      height: 300,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/images/hierve_el_agua.jpg',
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) =>
+                const ColoredBox(color: Color(0xFF315C45)),
+          ),
+          const DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0x16000000),
+                  Color(0x33000000),
+                  Color(0xD9000000),
+                ],
+                stops: [0, 0.42, 1],
               ),
-              const DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0x16000000),
-                      Color(0x33000000),
-                      Color(0xD9000000),
-                    ],
-                    stops: [0, 0.42, 1],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(22),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 11,
+                    vertical: 7,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.18),
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.35),
+                    ),
+                  ),
+                  child: const Text(
+                    'NATURALEZA  ·  CULTURA  ·  AVENTURA',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 1,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(22),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 11,
-                        vertical: 7,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.18),
-                        borderRadius: BorderRadius.circular(30),
-                        border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.35),
-                        ),
-                      ),
-                      child: const Text(
-                        'NATURALEZA  ·  CULTURA  ·  AVENTURA',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 13),
-                    Text(
-                      '¡Descubre Oaxaca!',
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800,
-                            height: 1.05,
-                          ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Déjate sorprender por sus paisajes y lugares llenos de historia.',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Colors.white.withValues(alpha: 0.92),
-                            height: 1.4,
-                          ),
-                    ),
-                    const SizedBox(height: 16),
-                    FilledButton.tonalIcon(
-                      onPressed: onTap,
-                      icon: const Icon(Icons.explore_outlined, size: 19),
-                      label: const Text('Comenzar a explorar'),
-                      style: FilledButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: const Color(0xFF315C45),
-                        minimumSize: const Size(0, 46),
-                      ),
-                    ),
-                  ],
+                const SizedBox(height: 13),
+                Text(
+                  '¡Descubre Oaxaca!',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    height: 1.05,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  'Déjate sorprender por sus paisajes y lugares llenos de historia.',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.white.withValues(alpha: 0.92),
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                FilledButton.tonalIcon(
+                  onPressed: onTap,
+                  icon: const Icon(Icons.explore_outlined, size: 19),
+                  label: const Text('Comenzar a explorar'),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color(0xFF315C45),
+                    minimumSize: const Size(0, 46),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }
 
 class _AccesoInicio extends StatelessWidget {
@@ -236,41 +232,40 @@ class _AccesoInicio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(20),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-            child: Row(
-              children: [
-                _IconoAcceso(icono: icono, color: color),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        titulo,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                      ),
-                      const SizedBox(height: 3),
-                      Text(
-                        detalle,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.onSurfaceVariant,
-                            ),
-                      ),
-                    ],
+    child: InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+        child: Row(
+          children: [
+            _IconoAcceso(icono: icono, color: color),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    titulo,
+                    style: Theme.of(context).textTheme.titleSmall
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
-                ),
-                const Icon(Icons.chevron_right, size: 21),
-              ],
+                  const SizedBox(height: 3),
+                  Text(
+                    detalle,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+            const Icon(Icons.chevron_right, size: 21),
+          ],
         ),
-      );
+      ),
+    ),
+  );
 }
 
 class _AccesoCuadrado extends StatelessWidget {
@@ -288,33 +283,35 @@ class _AccesoCuadrado extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(20),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 12),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _IconoAcceso(icono: icono, color: color, tamano: 46),
-                  const SizedBox(height: 12),
-                  Text(
-                    titulo,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                  ),
-                  const SizedBox(height: 2),
-                  Icon(Icons.arrow_forward,
-                      size: 16, color: Theme.of(context).colorScheme.outline),
-                ],
+    child: InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 12),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _IconoAcceso(icono: icono, color: color, tamano: 46),
+            const SizedBox(height: 12),
+            Text(
+              titulo,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.labelLarge
+                  ?.copyWith(fontWeight: FontWeight.w700),
             ),
-          ),
+            const SizedBox(height: 2),
+            Icon(
+              Icons.arrow_forward,
+              size: 16,
+              color: Theme.of(context).colorScheme.outline,
+            ),
+          ],
         ),
-      );
+      ),
+    ),
+  );
 }
 
 class _IconoAcceso extends StatelessWidget {
@@ -330,12 +327,12 @@ class _IconoAcceso extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        width: tamano,
-        height: tamano,
-        decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.12),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Icon(icono, color: color, size: 23),
-      );
+    width: tamano,
+    height: tamano,
+    decoration: BoxDecoration(
+      color: color.withValues(alpha: 0.12),
+      borderRadius: BorderRadius.circular(15),
+    ),
+    child: Icon(icono, color: color, size: 23),
+  );
 }

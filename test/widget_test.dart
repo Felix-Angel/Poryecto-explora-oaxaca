@@ -51,7 +51,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('Destinos de Oaxaca'), findsOneWidget);
+    expect(find.text('Explora el catálogo de Oaxaca'), findsOneWidget);
     expect(find.text('Hierve el Agua'), findsOneWidget);
 
     await tester.enterText(find.byType(TextField), 'Monte');
@@ -66,7 +66,7 @@ void main() {
 
     await tester.tap(find.byTooltip('Regresar'));
     await tester.pumpAndSettle();
-    expect(find.text('Destinos de Oaxaca'), findsOneWidget);
+    expect(find.text('Explora el catálogo de Oaxaca'), findsOneWidget);
   });
 }
 
