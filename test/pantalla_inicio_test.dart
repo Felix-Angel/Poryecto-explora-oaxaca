@@ -9,26 +9,25 @@ void main() {
 
     expect(find.text('¡Descubre Oaxaca!'), findsOneWidget);
 
-    await tester.scrollUntilVisible(
-      find.text('Ver catálogo de destinos'),
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
-    expect(find.text('Ver catálogo de destinos'), findsOneWidget);
+    final catalogo = find.text('Ver catálogo de destinos');
+    await tester.ensureVisible(catalogo);
+    await tester.pumpAndSettle();
+    expect(catalogo, findsOneWidget);
 
-    await tester.scrollUntilVisible(
-      find.text('Explorar categorías'),
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
-    expect(find.text('Explorar categorías'), findsOneWidget);
+    final categorias = find.text('Categorías');
+    await tester.ensureVisible(categorias);
+    await tester.pumpAndSettle();
+    expect(categorias, findsOneWidget);
 
-    await tester.scrollUntilVisible(
-      find.text('Acerca del proyecto'),
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
-    expect(find.text('Acerca del proyecto'), findsOneWidget);
+    final favoritos = find.text('Favoritos');
+    await tester.ensureVisible(favoritos);
+    await tester.pumpAndSettle();
+    expect(favoritos, findsOneWidget);
+
+    final acerca = find.text('Acerca del proyecto');
+    await tester.ensureVisible(acerca);
+    await tester.pumpAndSettle();
+    expect(acerca, findsOneWidget);
   });
 
   testWidgets('el botón de categorías abre la pantalla correspondiente', (
@@ -36,13 +35,11 @@ void main() {
   ) async {
     await tester.pumpWidget(const MaterialApp(home: PantallaInicio()));
 
-    await tester.scrollUntilVisible(
-      find.text('Explorar categorías'),
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
+    final accesoCategorias = find.text('Categorías');
+    await tester.ensureVisible(accesoCategorias);
+    await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Explorar categorías'));
+    await tester.tap(accesoCategorias);
     await tester.pumpAndSettle();
 
     expect(find.text('Categorías'), findsOneWidget);
