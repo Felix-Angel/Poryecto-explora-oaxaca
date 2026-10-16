@@ -18,15 +18,12 @@ class TarjetaDestino extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAlias,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       elevation: 2,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
+          Image.asset(
             imagenUrl,
             height: 180,
             width: double.infinity,
@@ -37,10 +34,7 @@ class TarjetaDestino extends StatelessWidget {
                 width: double.infinity,
                 color: Colors.grey.shade200,
                 alignment: Alignment.center,
-                child: const Icon(
-                  Icons.image_not_supported_outlined,
-                  size: 45,
-                ),
+                child: const Icon(Icons.image_not_supported_outlined, size: 45),
               );
             },
           ),
@@ -51,32 +45,19 @@ class TarjetaDestino extends StatelessWidget {
               children: [
                 Text(
                   nombre,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(context).textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 6),
                 Row(
                   children: [
-                    const Icon(
-                      Icons.location_on_outlined,
-                      size: 18,
-                    ),
+                    const Icon(Icons.location_on_outlined, size: 18),
                     const SizedBox(width: 4),
-                    Expanded(
-                      child: Text(municipio),
-                    ),
+                    Expanded(child: Text(municipio)),
                   ],
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  descripcion,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                Text(descripcion, maxLines: 3, overflow: TextOverflow.ellipsis),
               ],
             ),
           ),
