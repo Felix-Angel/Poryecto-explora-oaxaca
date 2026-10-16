@@ -20,7 +20,7 @@ class EtiquetaCategoria extends StatelessWidget {
       ),
     ),
     visualDensity: VisualDensity.compact,
-    backgroundColor: Colors.green,
+    backgroundColor: const Color(0xFFC47756),
     side: BorderSide.none,
     padding: const EdgeInsets.symmetric(horizontal: 5),
   );
