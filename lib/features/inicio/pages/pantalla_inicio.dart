@@ -30,7 +30,7 @@ class PantallaInicio extends StatelessWidget {
           children: [
             Icon(Icons.travel_explore, color: colores.primary, size: 25),
             const SizedBox(width: 9),
-            const Text('Explora Oaxaca'),
+            const Text('Explora Oaxaca -Descubre y viaja'),
           ],
         ),
         actions: [
