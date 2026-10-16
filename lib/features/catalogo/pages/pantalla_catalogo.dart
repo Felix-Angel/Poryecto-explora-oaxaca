@@ -36,7 +36,7 @@ class _PantallaCatalogoState extends State<PantallaCatalogo> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: const Text('Catalogo turistico de Oaxaca'),
+title: const Text('Descubre los destinos de Oaxaca'),
       actions: [
         IconButton(
           tooltip: 'Ver favoritos',
@@ -100,16 +100,16 @@ class _PantallaCatalogoState extends State<PantallaCatalogo> {
                         padding: const EdgeInsets.fromLTRB(20, 8, 20, 2),
                         child: Row(
                           children: [
-                            Icon(Icons.photo_library_outlined,
-                                size: 18,
-                                color: Theme.of(context).colorScheme.secondary),
+                            Icon(
+                              Icons.photo_library_outlined,
+                              size: 18,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
                             const SizedBox(width: 8),
                             Text(
                               '${destinos.length} '
                               '${destinos.length == 1 ? 'lugar para descubrir' : 'lugares para descubrir'}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge
+                              style: Theme.of(context).textTheme.labelLarge
                                   ?.copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -130,9 +130,8 @@ class _PantallaCatalogoState extends State<PantallaCatalogo> {
                             return TarjetaDestino(
                               destino: destino,
                               esFavorito: favoritos.contains(destino.id),
-                              onAlternarFavorito: () => FavoritosStore
-                                  .instancia
-                                  .alternar(destino.id),
+                              onAlternarFavorito: () =>
+                                  FavoritosStore.instancia.alternar(destino.id),
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute<void>(
                                   builder: (_) =>
