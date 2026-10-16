@@ -26,11 +26,12 @@ class PantallaInicio extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.travel_explore, color: colores.primary, size: 25),
             const SizedBox(width: 9),
-            const Text('Explora Oaxaca: descubre y viaja'),
+            const Expanded(
+              child: Text('Explora Oaxaca', overflow: TextOverflow.ellipsis),
+            ),
           ],
         ),
         actions: [
