@@ -23,6 +23,7 @@ class TarjetaDestino extends StatelessWidget {
     clipBehavior: Clip.antiAlias,
     margin: EdgeInsets.zero,
     elevation: 1,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     child: InkWell(
       onTap: onTap,
       child: Column(
@@ -64,9 +65,11 @@ class TarjetaDestino extends StatelessWidget {
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    Icon(Icons.location_on_outlined,
-                        size: 18,
-                        color: Theme.of(context).colorScheme.secondary),
+                    Icon(
+                      Icons.location_on_outlined,
+                      size: 18,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
                     const SizedBox(width: 4),
                     Expanded(
                       child: Text('${destino.municipio}, ${destino.ubicacion}'),
@@ -81,9 +84,9 @@ class TarjetaDestino extends StatelessWidget {
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        height: 1.45,
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                    height: 1.45,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
                 ),
               ],
             ),
