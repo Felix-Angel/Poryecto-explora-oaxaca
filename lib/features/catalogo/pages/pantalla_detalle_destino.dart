@@ -83,8 +83,11 @@ class PantallaDetalleDestino extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.location_on_outlined,
-                          color: Colors.white, size: 16),
+                      const Icon(
+                        Icons.location_on_outlined,
+                        color: Colors.white,
+                        size: 16,
+                      ),
                       const SizedBox(width: 5),
                       Text(
                         destino.municipio,
@@ -128,7 +131,7 @@ class PantallaDetalleDestino extends StatelessWidget {
                     contenido: destino.historia,
                     icono: Icons.account_balance_outlined,
                   ),
-                if (destino.actividades.isNotEmpty)
+                if (destino.actividades.isNotEmpty == true)
                   _DetalleLista(
                     titulo: 'Actividades',
                     elementos: destino.actividades,
@@ -190,17 +193,16 @@ class _DetalleSeccion extends StatelessWidget {
                 children: [
                   Text(
                     titulo,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
+                    style: Theme.of(context).textTheme.titleSmall
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(height: 7),
                   Text(
                     contenido,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          height: 1.5,
-                          color: colores.onSurfaceVariant,
-                        ),
+                      height: 1.5,
+                      color: colores.onSurfaceVariant,
+                    ),
                   ),
                 ],
               ),
@@ -220,46 +222,43 @@ class _DetalleLista extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-        margin: const EdgeInsets.only(top: 14),
-        child: Padding(
-          padding: const EdgeInsets.all(17),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                titulo,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-              const SizedBox(height: 8),
-              ...elementos.map(
-                (elemento) => Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.check_circle_outline,
-                        size: 18,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      const SizedBox(width: 9),
-                      Expanded(
-                        child: Text(
-                          elemento,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(height: 1.4),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+    margin: const EdgeInsets.only(top: 14),
+    child: Padding(
+      padding: const EdgeInsets.all(17),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            titulo,
+            style: Theme.of(context).textTheme.titleSmall
+                ?.copyWith(fontWeight: FontWeight.w700),
           ),
-        ),
-      );
+          const SizedBox(height: 8),
+          ...elementos.map(
+            (elemento) => Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.check_circle_outline,
+                    size: 18,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  const SizedBox(width: 9),
+                  Expanded(
+                    child: Text(
+                      elemento,
+                      style: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(height: 1.4),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
