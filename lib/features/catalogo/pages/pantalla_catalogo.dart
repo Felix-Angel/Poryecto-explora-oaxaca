@@ -37,7 +37,6 @@ class _PantallaCatalogoState extends State<PantallaCatalogo> {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: const Text('Destinos de Oaxaca'),
-      centerTitle: true,
       actions: [
         IconButton(
           tooltip: 'Ver favoritos',
@@ -95,25 +94,56 @@ class _PantallaCatalogoState extends State<PantallaCatalogo> {
                       mensaje: 'No encontramos destinos con esa búsqueda.',
                     );
                   }
-                  return ListView.separated(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: destinos.length,
-                    separatorBuilder: (_, _) => const SizedBox(height: 16),
-                    itemBuilder: (context, index) {
-                      final destino = destinos[index];
-                      return TarjetaDestino(
-                        destino: destino,
-                        esFavorito: favoritos.contains(destino.id),
-                        onAlternarFavorito: () =>
-                            FavoritosStore.instancia.alternar(destino.id),
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute<void>(
-                            builder: (_) =>
-                                PantallaDetalleDestino(destino: destino),
-                          ),
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 8, 20, 2),
+                        child: Row(
+                          children: [
+                            Icon(Icons.photo_library_outlined,
+                                size: 18,
+                                color: Theme.of(context).colorScheme.secondary),
+                            const SizedBox(width: 8),
+                            Text(
+                              '${destinos.length} '
+                              '${destinos.length == 1 ? 'lugar para descubrir' : 'lugares para descubrir'}',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge
+                                  ?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant,
+                                  ),
+                            ),
+                          ],
                         ),
-                      );
-                    },
+                      ),
+                      Expanded(
+                        child: ListView.separated(
+                          padding: const EdgeInsets.all(16),
+                          itemCount: destinos.length,
+                          separatorBuilder: (_, _) =>
+                              const SizedBox(height: 16),
+                          itemBuilder: (context, index) {
+                            final destino = destinos[index];
+                            return TarjetaDestino(
+                              destino: destino,
+                              esFavorito: favoritos.contains(destino.id),
+                              onAlternarFavorito: () => FavoritosStore
+                                  .instancia
+                                  .alternar(destino.id),
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute<void>(
+                                  builder: (_) =>
+                                      PantallaDetalleDestino(destino: destino),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),

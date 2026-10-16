@@ -82,27 +82,59 @@ class _PantallaFavoritosState extends State<PantallaFavoritos> {
                         );
                       }
 
-                      return ListView.separated(
-                        padding: const EdgeInsets.all(16),
-                        itemCount: favoritos.length,
-                        separatorBuilder: (_, _) => const SizedBox(height: 16),
-                        itemBuilder: (context, index) {
-                          final destino = favoritos[index];
-                          return TarjetaDestino(
-                            destino: destino,
-                            esFavorito: true,
-                            onAlternarFavorito: () =>
-                                _favoritos.alternar(destino.id),
-                            onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute<void>(
-                                builder: (_) => PantallaDetalleDestino(
-                                  destino: destino,
-                                  favoritos: _favoritos,
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 8, 20, 2),
+                            child: Row(
+                              children: [
+                                Icon(Icons.favorite,
+                                    size: 18,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondary),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '${favoritos.length} '
+                                  '${favoritos.length == 1 ? 'lugar guardado' : 'lugares guardados'}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge
+                                      ?.copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurfaceVariant,
+                                      ),
                                 ),
-                              ),
+                              ],
                             ),
-                          );
-                        },
+                          ),
+                          Expanded(
+                            child: ListView.separated(
+                              padding: const EdgeInsets.all(16),
+                              itemCount: favoritos.length,
+                              separatorBuilder: (_, _) =>
+                                  const SizedBox(height: 16),
+                              itemBuilder: (context, index) {
+                                final destino = favoritos[index];
+                                return TarjetaDestino(
+                                  destino: destino,
+                                  esFavorito: true,
+                                  onAlternarFavorito: () =>
+                                      _favoritos.alternar(destino.id),
+                                  onTap: () => Navigator.of(context).push(
+                                    MaterialPageRoute<void>(
+                                      builder: (_) => PantallaDetalleDestino(
+                                        destino: destino,
+                                        favoritos: _favoritos,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       );
                     },
                   ),

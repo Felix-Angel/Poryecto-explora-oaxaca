@@ -59,12 +59,46 @@ class PantallaDetalleDestino extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          WidgetImagenDestino(
-            ruta: destino.imagen,
-            altura: 260,
-            ancho: double.infinity,
-            proporcion: null,
-            radioBorde: 20,
+          Stack(
+            children: [
+              WidgetImagenDestino(
+                ruta: destino.imagen,
+                altura: 290,
+                ancho: double.infinity,
+                proporcion: null,
+                radioBorde: 24,
+              ),
+              Positioned(
+                left: 14,
+                bottom: 14,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xCC26352D),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.location_on_outlined,
+                          color: Colors.white, size: 16),
+                      const SizedBox(width: 5),
+                      Text(
+                        destino.municipio,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(4, 20, 4, 32),
@@ -131,27 +165,51 @@ class _DetalleSeccion extends StatelessWidget {
   final IconData icono;
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(top: 22),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
+  Widget build(BuildContext context) {
+    final colores = Theme.of(context).colorScheme;
+    return Card(
+      margin: const EdgeInsets.only(top: 14),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icono, size: 20),
-            const SizedBox(width: 8),
-            Text(
-              titulo,
-              style: Theme.of(context).textTheme.titleMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: colores.primaryContainer,
+                borderRadius: BorderRadius.circular(13),
+              ),
+              child: Icon(icono, color: colores.primary, size: 21),
+            ),
+            const SizedBox(width: 13),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    titulo,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
+                  const SizedBox(height: 7),
+                  Text(
+                    contenido,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          height: 1.5,
+                          color: colores.onSurfaceVariant,
+                        ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-        const SizedBox(height: 8),
-        Text(contenido, style: Theme.of(context).textTheme.bodyLarge),
-      ],
-    ),
-  );
+      ),
+    );
+  }
 }
 
 class _DetalleLista extends StatelessWidget {
@@ -161,29 +219,47 @@ class _DetalleLista extends StatelessWidget {
   final List<String> elementos;
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(top: 22),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          titulo,
-          style: Theme.of(context).textTheme.titleMedium
-              ?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        ...elementos.map(
-          (elemento) => Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('•  '),
-                Expanded(child: Text(elemento)),
-              ],
-            ),
+  Widget build(BuildContext context) => Card(
+        margin: const EdgeInsets.only(top: 14),
+        child: Padding(
+          padding: const EdgeInsets.all(17),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                titulo,
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+              ),
+              const SizedBox(height: 8),
+              ...elementos.map(
+                (elemento) => Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.check_circle_outline,
+                        size: 18,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                      const SizedBox(width: 9),
+                      Expanded(
+                        child: Text(
+                          elemento,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(height: 1.4),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-      ],
-    ),
-  );
+      );
 }

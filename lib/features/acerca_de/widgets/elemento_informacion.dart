@@ -18,14 +18,15 @@ class ElementoInformacion extends StatelessWidget {
     final estilos = Theme.of(context).textTheme;
 
     return Card(
+      margin: const EdgeInsets.only(bottom: 12),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(18),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
               backgroundColor: colores.secondaryContainer,
-              foregroundColor: colores.onSecondaryContainer,
+              foregroundColor: colores.secondary,
               child: Icon(icono),
             ),
             const SizedBox(width: 16),
@@ -33,9 +34,20 @@ class ElementoInformacion extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(titulo, style: estilos.titleMedium),
+                  Text(
+                    titulo,
+                    style: estilos.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  Text(descripcion, style: estilos.bodyMedium),
+                  Text(
+                    descripcion,
+                    style: estilos.bodyMedium?.copyWith(
+                      height: 1.45,
+                      color: colores.onSurfaceVariant,
+                    ),
+                  ),
                 ],
               ),
             ),
