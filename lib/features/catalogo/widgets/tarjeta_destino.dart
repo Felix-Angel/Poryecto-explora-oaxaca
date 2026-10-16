@@ -23,6 +23,9 @@ class TarjetaDestino extends StatelessWidget {
     clipBehavior: Clip.antiAlias,
     margin: EdgeInsets.zero,
     elevation: 1,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20),
+    ),
     child: InkWell(
       onTap: onTap,
       child: Column(
