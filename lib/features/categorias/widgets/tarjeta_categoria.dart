@@ -6,12 +6,14 @@ class TarjetaCategoria extends StatelessWidget {
     required this.nombre,
     required this.cantidadDestinos,
     required this.icono,
+    required this.imagen,
     required this.onTap,
   });
 
   final String nombre;
   final int cantidadDestinos;
   final IconData icono;
+  final String imagen;
   final VoidCallback onTap;
 
   @override
@@ -26,25 +28,59 @@ class TarjetaCategoria extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              CircleAvatar(
-                backgroundColor: colores.primaryContainer,
-                foregroundColor: colores.onPrimaryContainer,
-                child: Icon(icono),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: SizedBox(
+                  width: 78,
+                  height: 78,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(
+                        imagen,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            ColoredBox(color: colores.secondaryContainer),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          margin: const EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            icono,
+                            color: colores.secondary,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       nombre,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       '$cantidadDestinos '
                       '${cantidadDestinos == 1 ? 'destino' : 'destinos'}',
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: colores.onSurfaceVariant,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                   ],
                 ),

@@ -19,11 +19,11 @@ class TarjetaBienvenida extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(18),
         child: Row(
           children: [
             CircleAvatar(
-              radius: 28,
+              radius: 27,
               backgroundColor: colores.primaryContainer,
               foregroundColor: colores.onPrimaryContainer,
               child: Icon(icono, size: 30),
@@ -33,11 +33,19 @@ class TarjetaBienvenida extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(titulo, style: Theme.of(context).textTheme.titleMedium),
+                  Text(
+                    titulo,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
                   const SizedBox(height: 6),
                   Text(
                     descripcion,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          height: 1.4,
+                          color: colores.onSurfaceVariant,
+                        ),
                   ),
                 ],
               ),

@@ -48,7 +48,6 @@ class _PantallaCategoriasState extends State<PantallaCategorias> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categorías'),
-        centerTitle: true,
         actions: [
           IconButton(
             tooltip: 'Ver favoritos',
@@ -125,21 +124,77 @@ class _PantallaCategoriasState extends State<PantallaCategorias> {
                         nombre: nombre,
                         cantidadDestinos: destinosCategoria.length,
                         icono: _obtenerIcono(nombre),
+                        imagen: destinosCategoria.first.imagen,
                         onTap: () {
                           showModalBottomSheet<void>(
                             context: context,
                             showDragHandle: true,
+                            backgroundColor: Theme.of(context)
+                                .colorScheme
+                                .surface,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(28),
+                              ),
+                            ),
                             builder: (context) {
                               return SafeArea(
                                 child: ListView(
                                   shrinkWrap: true,
                                   padding: const EdgeInsets.all(16),
                                   children: [
-                                    Text(
-                                      nombre,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge,
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 46,
+                                          height: 46,
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondaryContainer,
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                          ),
+                                          child: Icon(
+                                            _obtenerIcono(nombre),
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 13),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                nombre,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge
+                                                    ?.copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                    ),
+                                              ),
+                                              const SizedBox(height: 3),
+                                              Text(
+                                                '${destinosCategoria.length} '
+                                                '${destinosCategoria.length == 1 ? 'destino disponible' : 'destinos disponibles'}',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall
+                                                    ?.copyWith(
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .onSurfaceVariant,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(height: 12),
                                     ...destinosCategoria.map(

@@ -12,7 +12,6 @@ class PantallaAcercaDe extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Acerca de Explora Oaxaca'),
-        centerTitle: true,
         actions: [
           IconButton(
             tooltip: 'Ver favoritos',
@@ -29,7 +28,52 @@ class PantallaAcercaDe extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            const SizedBox(height: 12),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: SizedBox(
+                height: 190,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(
+                      'assets/images/santo_domingo.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                    const DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0x11000000), Color(0xC9000000)],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 18,
+                      bottom: 16,
+                      child: Row(
+                        children: [
+                          const Icon(Icons.explore,
+                              color: Colors.white, size: 21),
+                          const SizedBox(width: 8),
+                          Text(
+                            'Cultura que inspira',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 22),
             const WidgetEncabezadoSeccion(
               titulo: 'Explora Oaxaca',
               subtitulo: 'Una aplicación para descubrir destinos turísticos de Oaxaca.',

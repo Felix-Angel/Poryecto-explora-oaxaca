@@ -1,3 +1,4 @@
+
 [
   {
     "id": "hierve-el-agua",
@@ -6,9 +7,17 @@
     "ubicacion": "Oaxaca",
     "categoria": "Formación natural",
     "descripcion": "Formaciones naturales de agua mineral y vistas panorámicas de las montañas.",
-    "historia": "",
-    "actividades": [],
-    "recomendaciones": [],
+    "historia": "Hierve el Agua es un sitio natural de Oaxaca conocido por sus formaciones rocosas que semejan cascadas petrificadas. Estas estructuras se originaron por la acumulación de minerales depositados por el agua de manantiales a lo largo del tiempo.",
+    "actividades": [
+      "Observar las cascadas petrificadas y las formaciones geológicas.",
+      "Contemplar el paisaje montañoso.",
+      "Visitar las pozas naturales, respetando las indicaciones del sitio."
+    ],
+    "recomendaciones": [
+      "Llevar agua potable, protector solar y sombrero.",
+      "Usar calzado cómodo y adecuado para caminar.",
+      "Respetar las áreas señalizadas y las indicaciones locales."
+    ],
     "imagen": "assets/images/hierve_el_agua.jpg"
   },
   {
@@ -18,9 +27,17 @@
     "ubicacion": "Oaxaca",
     "categoria": "Zona arqueológica",
     "descripcion": "Zona arqueológica zapoteca con plazas, pirámides y una gran riqueza histórica.",
-    "historia": "",
-    "actividades": [],
-    "recomendaciones": [],
+    "historia": "Monte Albán fue una de las principales ciudades de la antigua civilización zapoteca y tuvo un papel importante en la historia de los Valles Centrales de Oaxaca. Su zona arqueológica conserva plazas, plataformas y edificios prehispánicos que permiten conocer parte de la historia de sus antiguos habitantes.",
+    "actividades": [
+      "Recorrer las estructuras arqueológicas abiertas al público.",
+      "Observar la Plaza Principal y la arquitectura prehispánica.",
+      "Conocer la historia y el legado de la cultura zapoteca."
+    ],
+    "recomendaciones": [
+      "Llevar agua, sombrero y protector solar.",
+      "Usar calzado cómodo para caminar por el recinto.",
+      "Respetar las estructuras arqueológicas y las restricciones de acceso."
+    ],
     "imagen": "assets/images/monte_alban.jpg"
   },
   {
@@ -30,9 +47,17 @@
     "ubicacion": "Oaxaca",
     "categoria": "Templo histórico",
     "descripcion": "Templo histórico destacado por su arquitectura y ornamentación.",
-    "historia": "",
-    "actividades": [],
-    "recomendaciones": [],
+    "historia": "El templo de Santo Domingo de Guzmán forma parte del patrimonio histórico de la ciudad de Oaxaca y está vinculado a la presencia de la orden dominicana. Es reconocido por su arquitectura barroca y su ornamentación. El antiguo conjunto conventual alberga el Museo de las Culturas de Oaxaca.",
+    "actividades": [
+      "Admirar la arquitectura y la ornamentación del templo.",
+      "Conocer el entorno histórico del conjunto conventual.",
+      "Visitar el Museo de las Culturas de Oaxaca cuando esté abierto al público."
+    ],
+    "recomendaciones": [
+      "Consultar los horarios de visita antes de acudir.",
+      "Respetar las actividades religiosas y las indicaciones del recinto.",
+      "Mantener una conducta respetuosa durante la visita."
+    ],
     "imagen": "assets/images/santo_domingo.jpg"
   }
 ]

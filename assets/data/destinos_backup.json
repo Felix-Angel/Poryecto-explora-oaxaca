@@ -1,0 +1,38 @@
+[
+  {
+    "id": "hierve-el-agua",
+    "nombre": "Hierve el Agua",
+    "municipio": "San Lorenzo Albarradas",
+    "ubicacion": "Oaxaca",
+    "categoria": "Formación natural",
+    "descripcion": "Formaciones naturales de agua mineral y vistas panorámicas de las montañas.",
+    "historia": "",
+    "actividades": [],
+    "recomendaciones": [],
+    "imagen": "assets/images/hierve_el_agua.jpg"
+  },
+  {
+    "id": "monte-alban",
+    "nombre": "Monte Albán",
+    "municipio": "Oaxaca de Juárez",
+    "ubicacion": "Oaxaca",
+    "categoria": "Zona arqueológica",
+    "descripcion": "Zona arqueológica zapoteca con plazas, pirámides y una gran riqueza histórica.",
+    "historia": "",
+    "actividades": [],
+    "recomendaciones": [],
+    "imagen": "assets/images/monte_alban.jpg"
+  },
+  {
+    "id": "santo-domingo",
+    "nombre": "Santo Domingo de Guzmán",
+    "municipio": "Oaxaca de Juárez",
+    "ubicacion": "Oaxaca",
+    "categoria": "Templo histórico",
+    "descripcion": "Templo histórico destacado por su arquitectura y ornamentación.",
+    "historia": "",
+    "actividades": [],
+    "recomendaciones": [],
+    "imagen": "assets/images/santo_domingo.jpg"
+  }
+]

@@ -15,12 +15,34 @@ class WidgetEncabezadoSeccion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final estilos = Theme.of(context).textTheme;
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outlineVariant
+              .withValues(alpha: 0.45),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
         if (icono != null) ...[
-          Icon(icono, color: Theme.of(context).colorScheme.primary, size: 28),
-          const SizedBox(width: 12),
+          Container(
+            width: 46,
+            height: 46,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Icon(
+              icono,
+              color: Theme.of(context).colorScheme.primary,
+              size: 25,
+            ),
+          ),
+          const SizedBox(width: 14),
         ],
         Expanded(
           child: Column(
@@ -30,16 +52,24 @@ class WidgetEncabezadoSeccion extends StatelessWidget {
                 titulo,
                 style: estilos.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
+                  height: 1.15,
                 ),
               ),
               if (subtitulo != null && subtitulo!.trim().isNotEmpty) ...[
                 const SizedBox(height: 4),
-                Text(subtitulo!, style: estilos.bodyMedium),
+                Text(
+                  subtitulo!,
+                  style: estilos.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    height: 1.4,
+                  ),
+                ),
               ],
             ],
           ),
         ),
-      ],
+        ],
+      ),
     );
   }
 }
