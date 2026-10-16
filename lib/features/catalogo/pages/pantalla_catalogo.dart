@@ -36,7 +36,7 @@ class _PantallaCatalogoState extends State<PantallaCatalogo> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: const Text('Destinos de Oaxaca'),
+      title: const Text('Catalogo turistico de Oaxaca'),
       actions: [
         IconButton(
           tooltip: 'Ver favoritos',
