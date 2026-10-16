@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 import '../../../data/destinos_repository.dart';
+import '../../../shared/widgets/widget_encabezado_seccion.dart';
+import '../../favoritos/pages/pantalla_favoritos.dart';
 import '../../catalogo/pages/pantalla_catalogo.dart';
 import '../../categorias/pages/pantalla_categorias.dart';
 import '../../acerca_de/pages/pantalla_acerca_de.dart';
 import '../widgets/tarjeta_bienvenida.dart';
 
 class PantallaInicio extends StatelessWidget {
-  const PantallaInicio({super.key});
+  const PantallaInicio({
+    super.key,
+    this.repository = const DestinosRepository(),
+  });
+
+  final DestinosRepository repository;
 
   void _abrirPantalla(BuildContext context, Widget pantalla) {
     Navigator.of(context)
@@ -16,10 +23,18 @@ class PantallaInicio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final estilos = Theme.of(context).textTheme;
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Explora Oaxaca'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Explora Oaxaca'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            tooltip: 'Ver favoritos',
+            onPressed: () => _abrirPantalla(context, const PantallaFavoritos()),
+            icon: const Icon(Icons.favorite_border),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
@@ -27,19 +42,10 @@ class PantallaInicio extends StatelessWidget {
             const SizedBox(height: 12),
             const Icon(Icons.explore, size: 76),
             const SizedBox(height: 12),
-            Text(
-              '¡Descubre Oaxaca!',
-              textAlign: TextAlign.center,
-              style: estilos.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Explora sus destinos, conoce sus categorías '
-              'y descubre la información disponible de cada lugar.',
-              textAlign: TextAlign.center,
-              style: estilos.bodyLarge,
+            const WidgetEncabezadoSeccion(
+              titulo: '¡Descubre Oaxaca!',
+              subtitulo: 'Explora sus destinos, conoce sus categorías y descubre la información disponible de cada lugar.',
+              icono: Icons.explore_outlined,
             ),
             const SizedBox(height: 24),
             const TarjetaBienvenida(
@@ -67,7 +73,7 @@ class PantallaInicio extends StatelessWidget {
               onPressed: () {
                 _abrirPantalla(
                   context,
-                  PantallaCatalogo(repository: const DestinosRepository()),
+                  PantallaCatalogo(repository: repository),
                 );
               },
               icon: const Icon(Icons.place_outlined),
@@ -88,6 +94,15 @@ class PantallaInicio extends StatelessWidget {
               },
               icon: const Icon(Icons.info_outline),
               label: const Text('Acerca del proyecto'),
+            ),
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: () => _abrirPantalla(
+                context,
+                PantallaFavoritos(repository: repository),
+              ),
+              icon: const Icon(Icons.favorite_border),
+              label: const Text('Ver favoritos'),
             ),
           ],
         ),

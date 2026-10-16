@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
 import 'data/destinos_repository.dart';
-import 'features/catalogo/pages/pantalla_catalogo.dart';
+import 'features/inicio/pages/pantalla_inicio.dart';
 
 class ExploraOaxacaApp extends StatelessWidget {
   const ExploraOaxacaApp({
@@ -18,7 +18,7 @@ class ExploraOaxacaApp extends StatelessWidget {
       title: 'Explora Oaxaca',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      home: PantallaCatalogo(repository: destinosRepository),
+      home: PantallaInicio(repository: destinosRepository),
     );
   }
 }

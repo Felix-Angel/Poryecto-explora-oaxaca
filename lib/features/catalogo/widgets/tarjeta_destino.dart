@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/destino.dart';
+import '../../../shared/widgets/widget_imagen_destino.dart';
 import 'etiqueta_categoria.dart';
 
 class TarjetaDestino extends StatelessWidget {
-  const TarjetaDestino({super.key, required this.destino, required this.onTap});
+  const TarjetaDestino({
+    super.key,
+    required this.destino,
+    required this.onTap,
+    this.esFavorito = false,
+    this.onAlternarFavorito,
+  });
 
   final Destino destino;
   final VoidCallback onTap;
+  final bool esFavorito;
+  final VoidCallback? onAlternarFavorito;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -19,28 +28,38 @@ class TarjetaDestino extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-            destino.imagen,
-            height: 180,
-            width: double.infinity,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) => Container(
-              height: 180,
-              width: double.infinity,
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
-              alignment: Alignment.center,
-              child: const Icon(Icons.image_not_supported_outlined, size: 45),
-            ),
+          WidgetImagenDestino(
+            ruta: destino.imagen,
+            altura: 180,
+            ancho: double.infinity,
+            proporcion: null,
+            radioBorde: 0,
           ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  destino.nombre,
-                  style: Theme.of(context).textTheme.titleLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        destino.nombre,
+                        style: Theme.of(context).textTheme.titleLarge
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    if (onAlternarFavorito != null)
+                      IconButton(
+                        tooltip: esFavorito
+                            ? 'Quitar de favoritos'
+                            : 'Agregar a favoritos',
+                        onPressed: onAlternarFavorito,
+                        icon: Icon(
+                          esFavorito ? Icons.favorite : Icons.favorite_border,
+                        ),
+                      ),
+                  ],
                 ),
                 const SizedBox(height: 4),
                 Row(

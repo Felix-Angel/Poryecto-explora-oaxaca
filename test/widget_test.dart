@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('la aplicación inicia en el catálogo', (tester) async {
+  testWidgets('la aplicación inicia en la pantalla de inicio', (tester) async {
     await tester.pumpWidget(
       ExploraOaxacaApp(destinosRepository: _FakeDestinosRepository()),
     );
 
-    expect(find.text('Destinos de Oaxaca'), findsOneWidget);
+    expect(find.text('Explora Oaxaca'), findsOneWidget);
   });
 
   test('el JSON carga y se convierte en tres destinos', () async {
@@ -45,7 +45,9 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      MaterialApp(home: PantallaCatalogo(repository: _FakeDestinosRepository())),
+      MaterialApp(
+        home: PantallaCatalogo(repository: _FakeDestinosRepository()),
+      ),
     );
     await tester.pumpAndSettle();
 
@@ -62,7 +64,7 @@ void main() {
     expect(find.text('Descripción'), findsOneWidget);
     expect(find.text('Zona arqueológica'), findsOneWidget);
 
-    await tester.tap(find.byTooltip('Regresar al catálogo'));
+    await tester.tap(find.byTooltip('Regresar'));
     await tester.pumpAndSettle();
     expect(find.text('Destinos de Oaxaca'), findsOneWidget);
   });
