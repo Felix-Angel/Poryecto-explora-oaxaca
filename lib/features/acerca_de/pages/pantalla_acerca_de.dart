@@ -35,9 +35,20 @@ class PantallaAcercaDe extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.asset(
-                      'assets/images/santo_domingo.jpg',
+                    Image.network(
+                      'https://tzmedia.b-cdn.net/media/images/mx/place/max/afb48af5594be5bbbea7ec17c9746b3a.jpg?1582270511',
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          ColoredBox(
+                            color: Theme.of(context).colorScheme.primary,
+                            child: const Center(
+                              child: Icon(
+                                Icons.image_not_supported_outlined,
+                                color: Colors.white,
+                                size: 40,
+                              ),
+                            ),
+                          ),
                     ),
                     const DecoratedBox(
                       decoration: BoxDecoration(

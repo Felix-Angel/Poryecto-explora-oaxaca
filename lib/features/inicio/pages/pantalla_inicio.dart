@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_theme.dart';
 import '../../../data/destinos_repository.dart';
 import '../../acerca_de/pages/pantalla_acerca_de.dart';
 import '../../categorias/pages/pantalla_categorias.dart';
@@ -83,7 +84,7 @@ class PantallaInicio extends StatelessWidget {
                   child: _AccesoCuadrado(
                     icono: Icons.category_outlined,
                     titulo: 'Categorías',
-                    color: colores.secondary,
+                    color: colores.tertiary,
                     onTap: () =>
                         _abrirPantalla(context, const PantallaCategorias()),
                   ),
@@ -93,7 +94,7 @@ class PantallaInicio extends StatelessWidget {
                   child: _AccesoCuadrado(
                     icono: Icons.favorite_border,
                     titulo: 'Favoritos',
-                    color: colores.primary,
+                    color: AppTheme.bugambilia,
                     onTap: () => _abrirPantalla(
                       context,
                       PantallaFavoritos(repository: repository),
@@ -107,7 +108,7 @@ class PantallaInicio extends StatelessWidget {
               icono: Icons.info_outline,
               titulo: 'Acerca del proyecto',
               detalle: 'Conoce más sobre Explora Oaxaca',
-              color: const Color(0xFF8C674A),
+              color: AppTheme.turquesa,
               onTap: () => _abrirPantalla(context, const PantallaAcercaDe()),
             ),
           ],
@@ -130,8 +131,8 @@ class _Portada extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(
-            'assets/images/hierve_el_agua.jpg',
+          Image.network(
+            'https://traveltooaxaca.com/wp-content/uploads/2022/06/hierve-el-agua-FEAURED.jpg',
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) =>
                 const ColoredBox(color: Color(0xFF315C45)),
@@ -201,8 +202,8 @@ class _Portada extends StatelessWidget {
                   icon: const Icon(Icons.explore_outlined, size: 19),
                   label: const Text('Comenzar a explorar'),
                   style: FilledButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF315C45),
+                    backgroundColor: AppTheme.maiz,
+                    foregroundColor: AppTheme.tinta,
                     minimumSize: const Size(0, 46),
                   ),
                 ),
@@ -232,6 +233,7 @@ class _AccesoInicio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
+    color: color.withValues(alpha: 0.07),
     child: InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(20),
@@ -283,6 +285,7 @@ class _AccesoCuadrado extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
+    color: color.withValues(alpha: 0.12),
     child: InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(20),
@@ -330,8 +333,9 @@ class _IconoAcceso extends StatelessWidget {
     width: tamano,
     height: tamano,
     decoration: BoxDecoration(
-      color: color.withValues(alpha: 0.12),
+      color: color.withValues(alpha: 0.22),
       borderRadius: BorderRadius.circular(15),
+      border: Border.all(color: color.withValues(alpha: 0.18)),
     ),
     child: Icon(icono, color: color, size: 23),
   );

@@ -25,8 +25,8 @@ class ElementoInformacion extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
-              backgroundColor: colores.secondaryContainer,
-              foregroundColor: colores.secondary,
+              backgroundColor: colores.tertiaryContainer,
+              foregroundColor: colores.onTertiaryContainer,
               child: Icon(icono),
             ),
             const SizedBox(width: 16),

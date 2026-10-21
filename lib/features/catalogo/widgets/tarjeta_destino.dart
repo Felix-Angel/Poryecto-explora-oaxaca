@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../models/destino.dart';
 import '../../../shared/widgets/widget_imagen_destino.dart';
 import 'etiqueta_categoria.dart';
+import '../../../core/theme/app_theme.dart';
 
 class TarjetaDestino extends StatelessWidget {
   const TarjetaDestino({
@@ -52,6 +53,7 @@ class TarjetaDestino extends StatelessWidget {
                     ),
                     if (onAlternarFavorito != null)
                       IconButton(
+                        color: AppTheme.bugambilia,
                         tooltip: esFavorito
                             ? 'Quitar de favoritos'
                             : 'Agregar a favoritos',

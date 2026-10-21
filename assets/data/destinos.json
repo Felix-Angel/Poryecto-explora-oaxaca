@@ -18,7 +18,7 @@
       "Usar calzado cómodo y adecuado para caminar.",
       "Respetar las áreas señalizadas y las indicaciones locales."
     ],
-    "imagen": "assets/images/hierve_el_agua.jpg"
+    "imagen": "https://traveltooaxaca.com/wp-content/uploads/2022/06/hierve-el-agua-FEAURED.jpg"
   },
   {
     "id": "monte-alban",
@@ -38,7 +38,7 @@
       "Usar calzado cómodo para caminar por el recinto.",
       "Respetar las estructuras arqueológicas y las restricciones de acceso."
     ],
-    "imagen": "assets/images/monte_alban.jpg"
+    "imagen": "https://th.bing.com/th/id/R.b62b88900421075d3fe6feb517f09bb5?rik=pjqhMGQtd%2bo5oQ&riu=http%3a%2f%2fwww.thehistoryhub.com%2fwp-content%2fuploads%2f2015%2f02%2fMonte-Alban-Pictures.jpg&ehk=QvWDe2FrmHLQ%2fGltSwQP8P1Nbt6Ag8uxRNzjTb0S8RY%3d&risl=&pid=ImgRaw&r=0"
   },
   {
     "id": "santo-domingo",
@@ -58,6 +58,6 @@
       "Respetar las actividades religiosas y las indicaciones del recinto.",
       "Mantener una conducta respetuosa durante la visita."
     ],
-    "imagen": "assets/images/santo_domingo.jpg"
+    "imagen": "https://tzmedia.b-cdn.net/media/images/mx/place/max/afb48af5594be5bbbea7ec17c9746b3a.jpg?1582270511"
   }
 ]
