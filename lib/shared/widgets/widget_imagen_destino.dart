@@ -20,18 +20,34 @@ class WidgetImagenDestino extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imagen = Image.asset(
-      ruta,
-      width: ancho,
-      height: altura,
-      fit: ajuste,
-      errorBuilder: (context, error, stackTrace) => ColoredBox(
+    final uri = Uri.tryParse(ruta);
+    final esRemota = uri != null &&
+        (uri.scheme == 'http' || uri.scheme == 'https');
+    Widget errorBuilder(
+      BuildContext context,
+      Object error,
+      StackTrace? stackTrace,
+    ) => ColoredBox(
         color: Theme.of(context).colorScheme.surfaceContainerHighest,
         child: const Center(
           child: Icon(Icons.image_not_supported_outlined, size: 44),
         ),
-      ),
-    );
+      );
+    final imagen = esRemota
+        ? Image.network(
+            ruta,
+            width: ancho,
+            height: altura,
+            fit: ajuste,
+            errorBuilder: errorBuilder,
+          )
+        : Image.asset(
+            ruta,
+            width: ancho,
+            height: altura,
+            fit: ajuste,
+            errorBuilder: errorBuilder,
+          );
 
     final SizedBox contenido;
     if (altura != null || proporcion == null) {

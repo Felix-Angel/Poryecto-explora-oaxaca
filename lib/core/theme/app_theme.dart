@@ -5,6 +5,9 @@ class AppTheme {
   static const Color terracota = Color(0xFFC66A4A);
   static const Color crema = Color(0xFFFAF7F0);
   static const Color tinta = Color(0xFF26352D);
+  static const Color maiz = Color(0xFFE5B94B);
+  static const Color turquesa = Color(0xFF3E9B98);
+  static const Color bugambilia = Color(0xFFB64D73);
 
   static ThemeData get theme {
     final esquema = ColorScheme.fromSeed(
@@ -13,9 +16,11 @@ class AppTheme {
     ).copyWith(
       primary: verde,
       secondary: terracota,
+      tertiary: maiz,
       surface: Colors.white,
-      primaryContainer: const Color(0xFFE2EDE4),
-      secondaryContainer: const Color(0xFFF6E4DA),
+      primaryContainer: const Color(0xFFE4EEE6),
+      secondaryContainer: const Color(0xFFF7E7DF),
+      tertiaryContainer: const Color(0xFFFFF2CE),
     );
 
     return ThemeData(
@@ -43,7 +48,7 @@ class AppTheme {
         shadowColor: tinta.withValues(alpha: 0.06),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: const BorderSide(color: Color(0xFFECE9E0)),
+          side: const BorderSide(color: Color(0xFFE9E3D7)),
         ),
         margin: EdgeInsets.zero,
       ),

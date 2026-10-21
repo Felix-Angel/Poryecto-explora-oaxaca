@@ -5,6 +5,7 @@ import '../../../shared/widgets/widget_imagen_destino.dart';
 import '../../favoritos/favoritos_store.dart';
 import '../../favoritos/pages/pantalla_favoritos.dart';
 import '../widgets/etiqueta_categoria.dart';
+import '../../../core/theme/app_theme.dart';
 
 class PantallaDetalleDestino extends StatelessWidget {
   const PantallaDetalleDestino({
@@ -37,6 +38,7 @@ class PantallaDetalleDestino extends StatelessWidget {
             builder: (context, ids, _) {
               final esFavorito = ids.contains(destino.id);
               return IconButton(
+                color: AppTheme.bugambilia,
                 tooltip: esFavorito
                     ? 'Quitar de favoritos'
                     : 'Agregar a favoritos',

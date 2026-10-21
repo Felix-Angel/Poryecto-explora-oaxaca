@@ -18,11 +18,10 @@ class WidgetEncabezadoSeccion extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.secondaryContainer,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Theme.of(context).colorScheme.outlineVariant
-              .withValues(alpha: 0.45),
+          color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.20),
         ),
       ),
       child: Row(
@@ -33,12 +32,12 @@ class WidgetEncabezadoSeccion extends StatelessWidget {
             width: 46,
             height: 46,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
+              color: Theme.of(context).colorScheme.tertiaryContainer,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Icon(
               icono,
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.onTertiaryContainer,
               size: 25,
             ),
           ),

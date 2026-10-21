@@ -6,22 +6,25 @@ class EtiquetaCategoria extends StatelessWidget {
   final String categoria;
 
   @override
-  Widget build(BuildContext context) => Chip(
-    avatar: Icon(
-      Icons.local_offer_outlined,
-      size: 15,
-      color: Theme.of(context).colorScheme.secondary,
-    ),
-    label: Text(
-      categoria,
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.onSecondaryContainer,
-        fontWeight: FontWeight.w600,
+  Widget build(BuildContext context) {
+    final colores = Theme.of(context).colorScheme;
+    return Chip(
+      avatar: Icon(
+        Icons.local_offer_outlined,
+        size: 15,
+        color: colores.secondary,
       ),
-    ),
-    visualDensity: VisualDensity.compact,
-    backgroundColor: const Color(0xFFC47756),
-    side: BorderSide.none,
-    padding: const EdgeInsets.symmetric(horizontal: 5),
-  );
+      label: Text(
+        categoria,
+        style: TextStyle(
+        color: colores.onSecondaryContainer,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      visualDensity: VisualDensity.compact,
+      backgroundColor: colores.secondaryContainer,
+      side: BorderSide.none,
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+    );
+  }
 }

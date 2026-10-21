@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../shared/widgets/widget_imagen_destino.dart';
+
 class TarjetaCategoria extends StatelessWidget {
   const TarjetaCategoria({
     super.key,
@@ -36,24 +38,25 @@ class TarjetaCategoria extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      Image.asset(
-                        imagen,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            ColoredBox(color: colores.secondaryContainer),
+                      WidgetImagenDestino(
+                        ruta: imagen,
+                        ancho: 78,
+                        altura: 78,
+                        proporcion: null,
+                        radioBorde: 15,
                       ),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: Container(
                           margin: const EdgeInsets.all(5),
                           padding: const EdgeInsets.all(5),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
+                          decoration: BoxDecoration(
+                            color: colores.tertiaryContainer,
                             shape: BoxShape.circle,
                           ),
                           child: Icon(
                             icono,
-                            color: colores.secondary,
+                            color: colores.onTertiaryContainer,
                             size: 15,
                           ),
                         ),
