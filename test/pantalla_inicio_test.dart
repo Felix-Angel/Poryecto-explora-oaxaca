@@ -36,7 +36,11 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: PantallaInicio()));
 
     final accesoCategorias = find.text('Categorías');
-    await tester.ensureVisible(accesoCategorias);
+    await tester.scrollUntilVisible(
+      accesoCategorias,
+      400,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.pumpAndSettle();
 
     await tester.tap(accesoCategorias);

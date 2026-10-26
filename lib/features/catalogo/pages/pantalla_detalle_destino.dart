@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_theme.dart';
 import '../../../models/destino.dart';
+import '../../../shared/widgets/boton_navegacion.dart';
 import '../../../shared/widgets/widget_imagen_destino.dart';
 import '../../favoritos/favoritos_store.dart';
 import '../../favoritos/pages/pantalla_favoritos.dart';
 import '../widgets/etiqueta_categoria.dart';
-import '../../../core/theme/app_theme.dart';
 
 class PantallaDetalleDestino extends StatelessWidget {
   const PantallaDetalleDestino({
@@ -144,10 +145,10 @@ class PantallaDetalleDestino extends StatelessWidget {
                     elementos: destino.recomendaciones,
                   ),
                 const SizedBox(height: 12),
-                OutlinedButton.icon(
+                BotonNavegacion(
+                  texto: 'Regresar',
+                  icono: Icons.arrow_back,
                   onPressed: () => Navigator.of(context).maybePop(),
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Regresar'),
                 ),
               ],
             ),

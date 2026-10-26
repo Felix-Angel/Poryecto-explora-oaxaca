@@ -20,7 +20,10 @@ void main() {
 
     expect(destinos, hasLength(3));
     expect(destinos.map((destino) => destino.nombre), contains('Monte Albán'));
-    expect(destinos.first.imagen, 'assets/images/hierve_el_agua.jpg');
+    expect(
+      destinos.first.imagen,
+      'https://traveltooaxaca.com/wp-content/uploads/2022/06/hierve-el-agua-FEAURED.jpg',
+    );
   });
 
   test('el modelo rechaza listas con elementos de tipo incorrecto', () {
