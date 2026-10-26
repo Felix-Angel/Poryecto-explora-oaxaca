@@ -18,21 +18,52 @@ class WidgetImagenDestino extends StatelessWidget {
   final double radioBorde;
   final BoxFit ajuste;
 
+  String? _rutaRespaldoLocal(Uri? uri) {
+    if (uri == null) return null;
+
+    if (uri.path.endsWith('/hierve-el-agua-FEAURED.jpg')) {
+      return 'assets/images/hierve_el_agua.jpg';
+    }
+    if (uri.path.endsWith('/R.b62b88900421075d3fe6feb517f09bb5')) {
+      return 'assets/images/monte_alban.jpg';
+    }
+    if (uri.path.endsWith('/afb48af5594be5bbbea7ec17c9746b3a.jpg')) {
+      return 'assets/images/santo_domingo.jpg';
+    }
+    return null;
+  }
+
+  Widget _marcadorImagenNoDisponible(BuildContext context) => ColoredBox(
+    color: Theme.of(context).colorScheme.surfaceContainerHighest,
+    child: const Center(
+      child: Icon(Icons.image_not_supported_outlined, size: 44),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     final uri = Uri.tryParse(ruta);
     final esRemota = uri != null &&
         (uri.scheme == 'http' || uri.scheme == 'https');
+    final assetRespaldo = esRemota ? _rutaRespaldoLocal(uri) : null;
+
     Widget errorBuilder(
       BuildContext context,
       Object error,
       StackTrace? stackTrace,
-    ) => ColoredBox(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        child: const Center(
-          child: Icon(Icons.image_not_supported_outlined, size: 44),
-        ),
-      );
+    ) {
+      if (assetRespaldo != null) {
+        return Image.asset(
+          assetRespaldo,
+          width: ancho,
+          height: altura,
+          fit: ajuste,
+          errorBuilder: (context, error, stackTrace) =>
+              _marcadorImagenNoDisponible(context),
+        );
+      }
+      return _marcadorImagenNoDisponible(context);
+    }
     final imagen = esRemota
         ? Image.network(
             ruta,

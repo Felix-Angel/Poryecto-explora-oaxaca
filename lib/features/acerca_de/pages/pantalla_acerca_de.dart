@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/widgets/widget_encabezado_seccion.dart';
+import '../../../shared/widgets/widget_imagen_destino.dart';
 import '../../favoritos/pages/pantalla_favoritos.dart';
 import '../widgets/elemento_informacion.dart';
 
@@ -35,20 +36,13 @@ class PantallaAcercaDe extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.network(
-                      'https://tzmedia.b-cdn.net/media/images/mx/place/max/afb48af5594be5bbbea7ec17c9746b3a.jpg?1582270511',
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          ColoredBox(
-                            color: Theme.of(context).colorScheme.primary,
-                            child: const Center(
-                              child: Icon(
-                                Icons.image_not_supported_outlined,
-                                color: Colors.white,
-                                size: 40,
-                              ),
-                            ),
-                          ),
+                    const SizedBox.expand(
+                      child: WidgetImagenDestino(
+                        ruta:
+                            'https://tzmedia.b-cdn.net/media/images/mx/place/max/afb48af5594be5bbbea7ec17c9746b3a.jpg?1582270511',
+                        proporcion: null,
+                        radioBorde: 0,
+                      ),
                     ),
                     const DecoratedBox(
                       decoration: BoxDecoration(

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_theme.dart';
 import '../../../data/destinos_repository.dart';
+import '../../../shared/widgets/widget_imagen_destino.dart';
 import '../../acerca_de/pages/pantalla_acerca_de.dart';
 import '../../categorias/pages/pantalla_categorias.dart';
 import '../../catalogo/pages/pantalla_catalogo.dart';
 import '../../favoritos/pages/pantalla_favoritos.dart';
+import '../widgets/tarjeta_bienvenida.dart';
 
 class PantallaInicio extends StatelessWidget {
   const PantallaInicio({
@@ -54,19 +56,14 @@ class PantallaInicio extends StatelessWidget {
                 PantallaCatalogo(repository: repository),
               ),
             ),
-            const SizedBox(height: 28),
-            Text(
-              'Explora a tu manera',
-              style: Theme.of(context).textTheme.titleLarge
-                  ?.copyWith(fontWeight: FontWeight.w800),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              'Lugares únicos, historias y paisajes por descubrir.',
-              style: Theme.of(context).textTheme.bodyMedium
-                  ?.copyWith(color: colores.onSurfaceVariant),
-            ),
             const SizedBox(height: 16),
+            const TarjetaBienvenida(
+              titulo: 'Explora a tu manera',
+              descripcion:
+                  'Lugares únicos, historias y paisajes por descubrir.',
+              icono: Icons.travel_explore,
+            ),
+            const SizedBox(height: 12),
             _AccesoInicio(
               icono: Icons.place_outlined,
               titulo: 'Ver catálogo de destinos',
@@ -131,11 +128,13 @@ class _Portada extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.network(
-            'https://traveltooaxaca.com/wp-content/uploads/2022/06/hierve-el-agua-FEAURED.jpg',
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) =>
-                const ColoredBox(color: Color(0xFF315C45)),
+          SizedBox.expand(
+            child: WidgetImagenDestino(
+              ruta:
+                  'https://traveltooaxaca.com/wp-content/uploads/2022/06/hierve-el-agua-FEAURED.jpg',
+              proporcion: null,
+              radioBorde: 0,
+            ),
           ),
           const DecoratedBox(
             decoration: BoxDecoration(
